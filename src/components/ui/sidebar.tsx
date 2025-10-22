@@ -233,7 +233,7 @@ function Sidebar({
           side === "left"
             ? "left-0 "
             : "right-0 ",
-                state === "collapsed" ? "w-[var(--sidebar-width-icon)]" : "w-[var(--sidebar-width)]",
+                state === "collapsed" ? "w-(--sidebar-width-icon)" : "w-(--sidebar-width)",
         
           variant === "floating" || variant === "inset"
             ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"

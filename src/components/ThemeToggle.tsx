@@ -40,7 +40,7 @@ export function ThemeToggle() {
           </button>
         </div>
       )}
-      {theme === "dark" && (
+      {theme === "dark" || theme==="system" && (
         <div className="flex items-center justify-center bg-[#FFFFFF0A] w-fit  mx-auto p-1 rounded-2xl gap-2">
           <button
             onClick={() => handleClick("light")}

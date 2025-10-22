@@ -33,6 +33,7 @@ body {
   max-width:  1290px;
   align-items: center;
   height: full;
+  scroll-behavior: smooth;
 
 }
 
