@@ -1,3 +1,4 @@
+"use client";
 import { assets } from "@/app/assets/assets";
 import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
@@ -5,7 +6,9 @@ import ProgressBar from "./ProgressIndicator";
 import { TodoItem, useTodo } from "@/context/TodoContext";
 import { Button } from "./ui/button";
 import { TaskWidget3D } from "./ProgressStars";
-import TaskCube from "./TaskCube";
+
+import dynamic from "next/dynamic";
+const TaskCube = dynamic(() => import("./TaskCube"), { ssr: false });
 
 interface TodoIcon {
   message: string | StaticImageData;
@@ -29,7 +32,6 @@ const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
   const { deleteTodo, moveToProgress, markAsCompleted } = useTodo();
 
   const toggleEdit = (id: number) => {
-   
     setActiveTaskId((prevId) => (prevId === id ? null : id));
   };
 
