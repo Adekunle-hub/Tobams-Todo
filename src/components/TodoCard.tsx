@@ -8,7 +8,6 @@ import React, { useState } from "react";
 import ProgressBar from "./ProgressIndicator";
 import { TodoItem, useTodo } from "@/context/TodoContext";
 
-
 import dynamic from "next/dynamic";
 const TaskStar = dynamic(() => import("./TaskStar"), { ssr: false });
 import { ClientOnly } from "./ThreeJsWrapper";
@@ -69,7 +68,9 @@ const TodoCard: React.FC<TodoCardProps> = ({ task }) => {
 
         <div
           className={`
-            ${task.status === "completed" ? "-top-4" : "-top-20"}
+            ${task.status === "completed" || "inProgress" ? "-top-12" : "-top-20"}
+             
+
             task-item absolute  -right-8`}
         >
           {activeTaskId === task.id && (

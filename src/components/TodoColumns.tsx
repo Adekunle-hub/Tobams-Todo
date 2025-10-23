@@ -43,7 +43,7 @@ const TodoColumns: React.FC<TodoColumnsProps> = ({
             <Image
               src={assets.plusIcon}
               alt="add"
-              className="w-4 h-4 p-1  bg-[#1C1D2214]  rounded-full"
+              className="w-4 h-4 p-1  bg-[#1C1D2214] dark:bg-[#FFFFFF1A]  rounded-full"
             />
             Add new task
           </div>
