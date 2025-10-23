@@ -5,7 +5,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 interface TaskCubeProps {
-  completedTasks: number; // 0–100
+  completedTasks: number; 
 }
 
 const RotatingCube = ({ color, scale }: { color: string; scale: number }) => {
@@ -26,16 +26,16 @@ const RotatingCube = ({ color, scale }: { color: string; scale: number }) => {
   );
 };
 
-export const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks }) => {
+ const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks }) => {
 
   const progress = Math.max(0, Math.min(100, completedTasks));
 
-  // Determine color based on progress
-  let color = "#FFA048"; // todo (0%)
-  if (progress > 0 && progress < 100) color = "#FF7979"; // in-progress
-  else if (progress === 100) color = "#78D700"; // completed
 
-  // Optional: scale smaller if completed
+  let color = "#FFA048"; 
+  if (progress > 0 && progress < 100) color = "#FF7979"; 
+  else if (progress === 100) color = "#78D700"; 
+
+ 
   const scale = progress === 100 ? 1.2 : 1.5;
 
   return (
@@ -50,3 +50,5 @@ export const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks }) => {
     </Canvas>
   );
 };
+
+export default TaskCube;

@@ -7,7 +7,9 @@ import { TodoItem, useTodo } from "@/context/TodoContext";
 import { Button } from "./ui/button";
 
 import dynamic from "next/dynamic";
-import { TaskCube } from "./TaskCube";
+
+const TaskCube = dynamic(() => import("./TaskCube"), { ssr: false });
+
 import { ClientOnly } from "./ThreeJsWrapper";
 
 interface TodoIcon {
