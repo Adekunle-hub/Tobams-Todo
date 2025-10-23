@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "To-Do 3D App",
-  description: "A 3D to-do app built with Next.js and React Three Fiber",
+  title: "To-Do App",
+  description: "A to-do app built with Next.js and React Three Fiber",
 };
 
 export default function RootLayout({
