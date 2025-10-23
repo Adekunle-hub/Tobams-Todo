@@ -47,7 +47,7 @@ export default function NewTask() {
   return (
     <>
       {addNewTask && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+        <div className="fixed inset-0 flex px-4 items-center justify-center bg-black/50 z-9999">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-3 p-6 bg-white dark:bg-[#1C1D22] shadow-2xl rounded-xl w-full max-w-md relative"

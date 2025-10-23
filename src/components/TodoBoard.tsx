@@ -31,7 +31,7 @@ export default function TodoBoard() {
     if (!over) return;
     const activeContainer = findContainer(active.id as string);
     const overContainer = findContainer(over.id as string);
-    if (activeContainer !== overContainer) updateTodoStatus(+active.id, overContainer as any);
+    if (activeContainer !== overContainer) updateTodoStatus(+active.id, overContainer);
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
