@@ -30,7 +30,6 @@ body {
   display: flex;
   justify-content: center;
   margin-inline: auto;
-
   align-items: center;
   height: full;
   scroll-behavior: smooth;

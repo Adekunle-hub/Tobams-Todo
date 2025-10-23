@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 
 import dynamic from "next/dynamic";
 
-const TaskCube = dynamic(() => import("./TaskCube"), { ssr: false });
+const TaskStar = dynamic(() => import("./TaskStar"), { ssr: false });
 
 import { ClientOnly } from "./ThreeJsWrapper";
 
@@ -103,10 +103,11 @@ const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
             </p>
           </div>
           <ProgressBar percentage={task.progressPercent} color={task.color} />
-
-          <ClientOnly>
-            <TaskCube completedTasks={task.progressPercent} />
-          </ClientOnly>
+          {task.status === "completed" && (
+            <ClientOnly>
+              <TaskStar completedTasks={task.progressPercent} />
+            </ClientOnly>
+          )}
 
           <div className="flex items-center justify-between my-3">
             <span
