@@ -35,7 +35,7 @@ body {
   height: full;
   scroll-behavior: smooth;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1900px) {
   body {
     max-width: 1290px;
     margin-inline: auto;
