@@ -12,9 +12,14 @@ export function ThemeToggle() {
 
   if (!mounted) return null;
 
-  const currentTheme = theme ?? "light";
-  const isLight = currentTheme === "light";
-  const isDark = currentTheme === "dark";
+  const currentTheme = theme || "system";
+  const isSystem = currentTheme === "system";
+  const isLight =
+    currentTheme === "light" ||
+    (isSystem && window.matchMedia("(prefers-color-scheme: light)").matches);
+  const isDark =
+    currentTheme === "dark" ||
+    (isSystem && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   const handleClick = (mode: "dark" | "light") => setTheme(mode);
 

@@ -153,10 +153,10 @@ export function AppSidebar() {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroup>
+          <SidebarFooter className="transition-all z-50  mt-auto duration-300 ease-in-out">
+            <ThemeToggle />
+          </SidebarFooter>
         </SidebarContent>
-        <SidebarFooter className="transition-all z-50  mt-auto duration-300 ease-in-out">
-          <ThemeToggle />
-        </SidebarFooter>
       </Sidebar>
     </>
   );
