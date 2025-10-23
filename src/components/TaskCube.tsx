@@ -5,8 +5,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 interface TaskCubeProps {
-  completedTasks: number;
-  totalTasks: number;
+  completedTasks: number; // 0–100
 }
 
 const RotatingCube = ({ color, scale }: { color: string; scale: number }) => {
@@ -27,26 +26,27 @@ const RotatingCube = ({ color, scale }: { color: string; scale: number }) => {
   );
 };
 
-const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks, totalTasks }) => {
- const progress = completedTasks; 
+export const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks }) => {
+  // Clamp progress between 0 and 100
+  const progress = Math.max(0, Math.min(100, completedTasks));
 
-  let color = "#FFA048"; 
-  const scale = 2;
-  if (progress === 0) {
-    color = "#FFA048"; 
-  } else if (progress > 0 && progress < 100) {
-    color = "#FF7979";
-  } else if (progress === 100) {
-    color = "#78D700"; 
-  }
+  // Determine color based on progress
+  let color = "#FFA048"; // todo (0%)
+  if (progress > 0 && progress < 100) color = "#FF7979"; // in-progress
+  else if (progress === 100) color = "#78D700"; // completed
+
+  // Optional: scale smaller if completed
+  const scale = progress === 100 ? 1.2 : 1.5;
 
   return (
-    <Canvas style={{ width: 40, height: 40, display: "inline-block" }}>
+    <Canvas
+      style={{ width: 80, height: 80 }}
+      camera={{ position: [3, 3, 5], fov: 45 }}
+    >
       <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
+      <pointLight position={[10, 10, 10]} intensity={0.8} />
+      <pointLight position={[-10, -10, -10]} intensity={0.3} />
       <RotatingCube color={color} scale={scale} />
     </Canvas>
   );
 };
-
-export default TaskCube;

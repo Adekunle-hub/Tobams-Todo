@@ -5,10 +5,10 @@ import React, { useState } from "react";
 import ProgressBar from "./ProgressIndicator";
 import { TodoItem, useTodo } from "@/context/TodoContext";
 import { Button } from "./ui/button";
-import { TaskWidget3D } from "./ProgressStars";
 
 import dynamic from "next/dynamic";
-const TaskCube = dynamic(() => import("./TaskCube"), { ssr: false });
+import { TaskCube } from "./TaskCube";
+import { ClientOnly } from "./ThreeJsWrapper";
 
 interface TodoIcon {
   message: string | StaticImageData;
@@ -102,7 +102,9 @@ const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
           </div>
           <ProgressBar percentage={task.progressPercent} color={task.color} />
 
-          <TaskCube completedTasks={task.progressPercent} totalTasks={100} />
+          <ClientOnly>
+            <TaskCube completedTasks={task.progressPercent}  />
+          </ClientOnly>
 
           <div className="flex items-center justify-between my-3">
             <span
