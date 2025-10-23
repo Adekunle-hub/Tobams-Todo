@@ -14,7 +14,7 @@ const Todo = () => {
   const { todos, setAddNewTask} = useTodo();
   const todoTasks = todos.filter((task: TodoItem) => task.status === "todo");
   return (
-    <main className="flex  border-dashed border-[#1C1D2214] border-2  flex-col dark:bg-[#24262C] my-4 rounded-lg">
+    <main className="flex  border-dashed border-[#1C1D2214] border-2  flex-col dark:bg-[#292B31] my-4 rounded-lg">
       <div className="flex items-center justify-between pb-1 pt-2 px-4">
         <h5 className="text-xs font-semibold dark:text-[#FFFFFF80] text-[#1C1D2280]">
           To do({todoTasks.length})

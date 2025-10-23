@@ -150,6 +150,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
       color: "#FFA048",
       messageCount: 0,
       shareCount: 0,
+      image:assets.groupPicture,
       status: task.status || "todo",
     };
     setTodos((prev) => [...prev, newTodo]);

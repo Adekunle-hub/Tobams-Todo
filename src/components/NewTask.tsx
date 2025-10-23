@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTodo } from "@/context/TodoContext";
+import { assets } from "@/app/assets/assets";
 
 export default function NewTask() {
   const { addTodo, todos, addNewTask, setAddNewTask } = useTodo();
@@ -30,9 +31,11 @@ export default function NewTask() {
         year: "numeric",
       }),
       color: "#FFA048",
+      
       messageCount: 0,
       shareCount: 0,
-      status: status as "todo" | "inProgress" | "completed",
+      image:assets.groupPicture,
+      status: status as "todo" ,
     };
     addTodo(newTask);
     setTitle("");
@@ -74,8 +77,7 @@ export default function NewTask() {
               className="p-2 rounded border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none"
             >
               <option value="todo">To Do</option>
-              <option value="inprogress">In Progress</option>
-              <option value="completed">Completed</option>
+             
             </select>
 
             <button

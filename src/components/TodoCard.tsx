@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import ProgressBar from "./ProgressIndicator";
 import { TodoItem, useTodo } from "@/context/TodoContext";
 import { Button } from "./ui/button";
+import { TaskWidget3D } from "./ProgressStars";
+import TaskCube from "./TaskCube";
 
 interface TodoIcon {
   message: string | StaticImageData;
@@ -23,12 +25,11 @@ function addAlpha(hex: string, alpha: number) {
 
 const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
   const [activeTaskId, setActiveTaskId] = useState<number | null>(null);
- 
-  const { deleteTodo, moveToProgress, markAsCompleted} = useTodo();
+
+  const { deleteTodo, moveToProgress, markAsCompleted } = useTodo();
 
   const toggleEdit = (id: number) => {
-    console.log(id);
-  
+   
     setActiveTaskId((prevId) => (prevId === id ? null : id));
   };
 
@@ -55,25 +56,31 @@ const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
               onClick={() => toggleEdit(task.id)}
             />
 
-            { activeTaskId === task.id && (
-              <div className="absolute -top-20 -right-4 flex flex-col gap-1">
+            {activeTaskId === task.id && (
+              <div className="absolute -top-20 -right-4 flex justify-baseline flex-col gap-1">
+                {task.status === "todo" && (
+                  <Button
+                    onClick={() => moveToProgress(task.id)}
+                    className="text-xs cursor-pointer text-white font-semibold rounded-sm py-1 px-2 bg-[#FFA048] hover:bg-[#FFA048]/90 transition-all duration-200 ease-in-out"
+                  >
+                    In Progress
+                  </Button>
+                )}
+
+                {task.status != "completed" && (
+                  <Button
+                    onClick={() => markAsCompleted(task.id)}
+                    className="text-xs cursor-pointer text-white font-semibold rounded-sm py-1 px-2 bg-[#78D700] hover:bg-[#78D700]/90 transition-all duration-200 ease-in-out"
+                  >
+                    Completed
+                  </Button>
+                )}
                 <Button
                   onClick={() => deleteTodo(task.id)}
                   className="text-xs text-white font-semibold rounded-sm py-1 px-2 bg-red-900 hover:bg-red-900/90 transition-all duration-200 ease-in-out cursor-pointer"
                 >
                   Delete
                 </Button>
-                {task.status === "todo" && (
-                  <Button onClick={()=> moveToProgress(task.id)} className="text-xs cursor-pointer text-white font-semibold rounded-sm py-1 px-2 bg-[#FFA048] hover:bg-[#FFA048]/90 transition-all duration-200 ease-in-out">
-                    In Progress
-                  </Button>
-                )}
-
-                {task.status != "completed" && (
-                  <Button onClick={()=> markAsCompleted(task.id)} className="text-xs cursor-pointer text-white font-semibold rounded-sm py-1 px-2 bg-[#78D700] hover:bg-[#78D700]/90 transition-all duration-200 ease-in-out">
-                    Completed
-                  </Button>
-                )}
               </div>
             )}
           </div>
@@ -87,12 +94,14 @@ const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
               />
               Progress
             </span>
-
-            <p className="text-xs font-semibold text-[#FFFFFF80] ">
+            <p className="text-xs font-semibold text-[#1C1D22] dark:text-[#FFFFFF80] ">
               {task.progress}
             </p>
           </div>
           <ProgressBar percentage={task.progressPercent} color={task.color} />
+
+          <TaskCube completedTasks={task.progressPercent} totalTasks={100} />
+
           <div className="flex items-center justify-between my-3">
             <span
               style={{
