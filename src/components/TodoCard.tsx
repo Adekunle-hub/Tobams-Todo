@@ -68,10 +68,8 @@ const TodoCard: React.FC<TodoCardProps> = ({ task }) => {
 
         <div
           className={`
-            ${task.status === "completed" || "inProgress" ? "-top-12" : "-top-20"}
-             
-
-            task-item absolute  -right-8`}
+            ${task.status === "completed" || task.status=== "inProgress" ? "-top-12" : "-top-20"}
+            task-item absolute   -right-8`}
         >
           {activeTaskId === task.id && (
             <div className="flex flex-col gap-2 animate-stagger-buttons">
