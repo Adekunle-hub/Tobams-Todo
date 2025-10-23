@@ -13,7 +13,7 @@ const Header = () => {
         <Search className="w-5 h-5 hidden md:block" />
         <div className="relative hidden md:block">
           <Bell className="w-5 h-5" />
-          <div className="w-[8px] h-[8px] absolute right-0.5 top-0 rounded-full bg-[#FFA048]"></div>
+          <div className="w-2 h-2 absolute right-0.5 top-0 rounded-full bg-[#FFA048]"></div>
         </div>
 
         <div className="hidden md:block">

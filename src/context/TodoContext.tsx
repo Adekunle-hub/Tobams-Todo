@@ -39,6 +39,8 @@ interface TodoContextType {
   deleteTodo: (id: number) => void;
   addNewTask: boolean;
   setAddNewTask: React.Dispatch<React.SetStateAction<boolean>>;
+  updateTodoStatus: (id: number, newStatus: TodoStatus) => void;
+  reorderTodos: (updatedTodos: TodoItem[]) => void;
 }
 
 const TodoContext = createContext<TodoContextType | undefined>(undefined);
@@ -150,7 +152,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
       color: "#FFA048",
       messageCount: 0,
       shareCount: 0,
-      image:assets.groupPicture,
+      image: assets.groupPicture,
       status: task.status || "todo",
     };
     setTodos((prev) => [...prev, newTodo]);
@@ -170,6 +172,45 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
           : t
       )
     );
+
+  const updateTodoStatus = (id: number, newStatus: TodoStatus) => {
+    setTodos((prev) =>
+      prev.map((todo) => {
+        if (todo.id === id) {
+          let color = todo.color;
+          let progress = todo.progress;
+          let progressPercent = todo.progressPercent;
+
+          if (newStatus === "todo") {
+            color = "#FFA048";
+            progress = "0/10";
+            progressPercent = 0;
+          } else if (newStatus === "inProgress") {
+            color = "#FF7979";
+            progress = "5/10";
+            progressPercent = 50;
+          } else if (newStatus === "completed") {
+            color = "#78D700";
+            progress = "10/10";
+            progressPercent = 100;
+          }
+
+          return {
+            ...todo,
+            status: newStatus,
+            color,
+            progress,
+            progressPercent,
+          };
+        }
+        return todo;
+      })
+    );
+  };
+
+  const reorderTodos = (updatedTodos: TodoItem[]) => {
+    setTodos(updatedTodos);
+  };
 
   const markAsCompleted = (id: number) =>
     setTodos((prev) =>
@@ -199,6 +240,8 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
         setAddNewTask,
         markAsCompleted,
         deleteTodo,
+        updateTodoStatus,
+        reorderTodos,
       }}
     >
       {children}

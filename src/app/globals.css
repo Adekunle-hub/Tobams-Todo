@@ -41,6 +41,38 @@ body {
   }
 }
 
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+/* Optional: Container stagger container */
+@keyframes stagger-children {
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-stagger-buttons > * {
+  animation-fill-mode: both;
+  opacity: 0;
+}
+
+.animate-stagger-buttons {
+  animation: stagger-children 0.4s ease-out forwards;
+}
+
 /* Dark mode override */
 html.dark,
 body.dark {
