@@ -30,15 +30,14 @@ const RotatingCube = ({ color, scale }: { color: string; scale: number }) => {
 const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks, totalTasks }) => {
  const progress = completedTasks; 
 
-  let color = "#FFA048"; // todo
-  let scale = 2;
-
+  let color = "#FFA048"; 
+  const scale = 2;
   if (progress === 0) {
-    color = "#FFA048"; // todo
+    color = "#FFA048"; 
   } else if (progress > 0 && progress < 100) {
-    color = "#FF7979"; // in-progress
+    color = "#FF7979";
   } else if (progress === 100) {
-    color = "#78D700"; // completed
+    color = "#78D700"; 
   }
 
   return (
