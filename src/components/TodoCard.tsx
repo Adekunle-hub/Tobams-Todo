@@ -103,7 +103,7 @@ const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
           <ProgressBar percentage={task.progressPercent} color={task.color} />
 
           <ClientOnly>
-            <TaskCube completedTasks={task.progressPercent}  />
+            <TaskCube completedTasks={task.progressPercent} />
           </ClientOnly>
 
           <div className="flex items-center justify-between my-3">

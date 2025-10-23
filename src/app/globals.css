@@ -8,10 +8,10 @@
   /* Light mode tokens */
   --color-background-light: #ffffff;
   --color-foreground-light: #1c1d22;
-  --color-sidebar-light:  #1c1d22;
+  --color-sidebar-light: #1c1d22;
 
   /* Dark mode tokens */
-  --color-background-dark: #1C1D220A;
+  --color-background-dark: #1c1d220a;
   --color-foreground-dark: #ffffff;
   --color-sidebar-dark: #1c1d22;
 
@@ -29,12 +29,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
   justify-content: center;
-  margin-inline:auto;
-  max-width:  1290px;
+  margin-inline: auto;
+
   align-items: center;
   height: full;
   scroll-behavior: smooth;
-
+}
+@media (min-width: 1440px) {
+  body {
+    max-width: 1290px;
+    margin-inline: auto;
+  }
 }
 
 /* Dark mode override */

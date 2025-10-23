@@ -27,7 +27,7 @@ const RotatingCube = ({ color, scale }: { color: string; scale: number }) => {
 };
 
 export const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks }) => {
-  // Clamp progress between 0 and 100
+
   const progress = Math.max(0, Math.min(100, completedTasks));
 
   // Determine color based on progress
@@ -40,7 +40,7 @@ export const TaskCube: React.FC<TaskCubeProps> = ({ completedTasks }) => {
 
   return (
     <Canvas
-      style={{ width: 80, height: 80 }}
+      style={{ width: 40, height: 40 }}
       camera={{ position: [3, 3, 5], fov: 45 }}
     >
       <ambientLight intensity={0.5} />
