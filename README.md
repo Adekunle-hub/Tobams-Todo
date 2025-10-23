@@ -36,7 +36,9 @@ Edit/Delete Task: Click the three-dot icon next to a task title to open the task
 Status Updates:
 Changing a todo to In Progress or Completed moves it to the appropriate column.
 The visual progress indicators update according to the task status.
+There is also a drag drop functionality between the todo columns, this feature was implemented with the dnd-toolkit
 Filter and Sort: The filter and sort buttons are present in the UI but currently non-functional (dormant).
+
 
 Technologies Used
 Next.js (App Router) – Server-side rendering and frontend framework.
